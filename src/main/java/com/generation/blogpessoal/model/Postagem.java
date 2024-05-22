@@ -12,15 +12,15 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-@Entity
-@Table(name = "tb_postagens")
+@Entity //classe vai se tornar uma entidade do banco de dados
+@Table(name = "tb_postagens") //nomeando a tabela no banco de dados de tb_postagens
 public class Postagem {
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Id //tornar o campo uma chave primaria no banco de dados
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //tornando a chave primaria auto increment
 	private Long id;
 	
-	@NotBlank(message = "O atributo título é Obrigatório!")
+	@NotBlank(message = "O atributo título é Obrigatório!") //validation - validar nosso atributo NN e também não vazio
 	@Size(min = 5, max = 100, message = "O atributo título deve conter no mínimo 05 e no máximo 100 caracteres")
 	private String titulo;
 	
@@ -28,10 +28,11 @@ public class Postagem {
 	@Size(min = 10, max = 1000, message = "O atributo texto deve conter no mínimo 10 e no máximo 1000 caracteres")
 	private String texto;
 	
-	@UpdateTimestamp
+	@UpdateTimestamp //pega a data e hora do sistema e preenche no banco de dados
 	private LocalDateTime data;
 
 	
+	//geramos os getteres and setteres dos atributos para conseguir recuperar e inserir dados nos atributos
 	public Long getId() {
 		return id;
 	}
